@@ -9,19 +9,20 @@ import {ArticleService} from './article.service';
 export class AppComponent implements OnInit {
   title = 'conduit';
   subtitle = 'A place to share your <u>knowledge.</u>';
+  keyword = '';
   get list() {
     return this.articleService.list;
   }
 
   constructor(public articleService: ArticleService) {
-
   }
 
   ngOnInit(): void {
+    this.articleService.loadArticles();
   }
 
   searchArticle(keyword: string) {
-    this.articleService.searchArticle(keyword);
+    this.keyword = keyword;
   }
 
 }
